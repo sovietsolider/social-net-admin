@@ -1,0 +1,52 @@
+extends layout
+
+block content
+    script(src="/js/users.js")
+    //script(src="../../BABEL_SCRIPTS/friends.js")
+
+    //button() FUCK
+    div(class="container")
+        table(class="table table-striped" id="users_table")
+            thead
+                tr
+                    th ID
+                    th ФИО
+                    th Дата рождения
+                    th E-Mail
+                    th Фото
+                    th Роль
+                    th Статус
+    div(class="modal"  id="myModal")
+        div(class="modal-dialog")
+            div(class="modal-content")
+                div(class="modal-body" id="modal_0")
+                    div(class="container")
+                        div(class="form-group" style="margin: 16px;")
+                            form(id="modalForm", method="POST" enctype="multipart/form-data")
+                                p(class="inputText") Full name
+                                input(class="form-control" type="text" name="full_name")
+                                p(class="inputText") Birth date
+                                input(class="form-control" type="date" name="birth_date")
+                                p(class="inputText") Email
+                                input(class="form-control" type="text" name="email")
+                                p(class="inputText") Photo
+                                input(class="form-control" type="file" name="filedata")
+                                p(class="inputText") Roles
+                                select(class="form-control" name="role")
+                                    option admin
+                                    option user
+                                p(class="inputText") Status
+                                select(class="form-control" name="status")
+                                    option active
+                                    option unapproved
+                                    option blocked
+                                button(class="btn btn-primary" onclick="submitEdit()" style="margin-top:5px;") Edit
+
+
+    div(class="modal"  id="photoModal")
+        div(class="modal-dialog modal-lg")
+            div(class="modal-content modal-xl")
+                div(class="modal-body")
+                    div(class="container")
+                        div(class="row justify-content-center")
+                            img(id="photo_in_modal")
